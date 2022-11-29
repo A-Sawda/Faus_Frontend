@@ -1,0 +1,29 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Job :</h2>
+    </div>
+    <form>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>ID Job</label> <input type="text" [(ngModel)]="newJob.idJob" name="idJob" class="form-control"
+                placeholder="Nom unique du newJob...">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Statut Job</label> <input type="text" [(ngModel)]="newJob.statusJob" name="statusJob"
+                class="form-control" placeholder="Entrez le status du newJob...">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Salaire Min Job</label> <input type="number" [(ngModel)]="newJob.salaryMinJob" name="salaryMinJob"
+                class="form-control" placeholder="Entrez le salaire minimum du newJob...">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Salaire Max Job</label> <input type="number" [(ngModel)]="newJob.salaryMaxJob" name="salaryMaxJob"
+                class="form-control" placeholder="Entrez le salaire maximum du newJob...">
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="addJob()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

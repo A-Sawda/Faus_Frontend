@@ -1,0 +1,46 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Employé :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID</label>
+            <input type="number" [(ngModel)]="newEmployee.idEmployee" name="idEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Sexe</label>
+            <input type="text" [(ngModel)]="newEmployee.sexEmployee" name="sexEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date de naissance</label>
+            <input type="date" [(ngModel)]="newEmployee.brithdayEmployee" name="brithdayEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom</label>
+            <input type="text" [(ngModel)]="newEmployee.lastNameEmployee" name="lastNameEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Prénom</label>
+            <input type="text" [(ngModel)]="newEmployee.firstNameEmployee" name="firstNameEmployee" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Salaire</label>
+            <input type="number" [(ngModel)]="newEmployee.salaryEmployee" name="salaryEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date d'embauche</label>
+            <input type="date" [(ngModel)]="newEmployee.hiringDateEmployee" name="hiringDateEmployee" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Job</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdJob">
+                <option *ngFor="let job of jobs" [value]="job.idJob">
+                    {{job.idJob}}
+                </option>
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addEmployee()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

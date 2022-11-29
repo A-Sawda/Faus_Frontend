@@ -1,0 +1,12 @@
+<form>
+    <div> <label>ID Job</label> <input type="text" [(ngModel)]="job.idJob" name="idJob" class="form-control"
+        placeholder="Nom unique du job..."></div>
+    <div> <label>Statut Job</label> <input type="text" [(ngModel)]="job.statusJob" name="statusJob" class="form-control"
+            placeholder="Entrez le status du job..."> </div>
+    <div> <label>Salaire Min Job</label> <input type="number" [(ngModel)]="job.salaryMinJob" name="salaryMinJob"
+            class="form-control" placeholder="Entrez le salaire minimum du job..."> </div>
+    <div> <label>Salaire Max Job</label> <input type="number" [(ngModel)]="job.salaryMaxJob" name="salaryMaxJob"
+            class="form-control" placeholder="Entrez le salaire maximum du job..."> </div>
+    <div class="mt-2" [hidden]="ajout"> <button type="submit" class="btn btn-success" (click)="updateJob()">Modifier</button> </div>
+    <div class="mt-2" [hidden]="!ajout"> <button type="submit" class="btn btn-success" (click)="createJob()">Ajouter</button> </div>
+</form>
