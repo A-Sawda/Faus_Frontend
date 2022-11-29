@@ -3,12 +3,13 @@
         <app-add-update-job [job]="job" (jobUpdated)= "jobUpdated($event)" 
         (jobCreated)= "jobCreated($event)" [addJobBool]="addJobBool"></app-add-update-job>
     </div> -->
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2 mt-2 ">
-            <label>Identifiant</label>
-            <input #idJob [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+    <div class="input-group mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Chercher un job</span>
         </div>
-    </form>
+        <input type="text" class="form-control" placeholder="Identifiant" aria-label="Identifiant"
+            aria-describedby="basic-addon1" #idJob [(ngModel)]="searchTerm" name="searchTerm">
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped">

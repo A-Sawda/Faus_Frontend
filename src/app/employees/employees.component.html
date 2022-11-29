@@ -1,10 +1,11 @@
 <div class="container">
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2 mt-2 ">
-            <label>Chercher un employé par son nom</label>
-            <input #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+    <div class="input-group mb-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Chercher un employé</span>
         </div>
-    </form>
+        <input type="text" class="form-control" placeholder="Nom Prénom" aria-label="Nom Prénom"
+            aria-describedby="basic-addon1" #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm"> 
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped">
