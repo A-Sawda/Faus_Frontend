@@ -1,9 +1,9 @@
 <div class="container">
-    <form class="form-inline"> 
-        <div class="form-group mx-sm-3 mb-2 mt-2 "> 
-            <label>Nom :</label> 
-            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" > 
-        </div> 
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Chercher un employé par son nom</label>
+            <input #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+        </div>
     </form>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -28,8 +28,9 @@
                         <td>{{employee.salaryEmployee}}</td>
                         <td>{{employee.hiringDateEmployee| date:'dd/MM/yyyy'}}</td>
                         <td>{{employee.job.idJob}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
-                        <td><a class="btn btn-success" [routerLink]="['/update-employee',employee.idEmployee]">Modifier</a>
+                        <td><a class="btn btn-danger" (click)="deleteEmployeeById(employee)">Supprimer</a></td>
+                        <td><a class="btn btn-success"
+                                [routerLink]="['/update-employee',employee.idEmployee]">Modifier</a>
                         </td>
                     </tr>
                 </tbody>

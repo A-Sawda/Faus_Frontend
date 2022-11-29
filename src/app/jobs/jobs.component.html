@@ -1,13 +1,13 @@
 <div class="container">
     <!-- <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-        <app-add-update-job [job]="updatedJob" (jobUpdated)= "jobUpdated($event)" 
-        (jobCreated)= "jobCreated($event)" [ajout]="ajout"></app-add-update-job>
+        <app-add-update-job [job]="job" (jobUpdated)= "jobUpdated($event)" 
+        (jobCreated)= "jobCreated($event)" [addJobBool]="addJobBool"></app-add-update-job>
     </div> -->
-    <form class="form-inline"> 
-        <div class="form-group mx-sm-3 mb-2 mt-2 "> 
-            <label>Nom :</label> 
-            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" > 
-        </div> 
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Identifiant</label>
+            <input #idJob [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+        </div>
     </form>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -26,7 +26,7 @@
                         <td>{{job.statusJob}}</td>
                         <td>{{job.salaryMinJob}}</td>
                         <td>{{job.salaryMaxJob}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerJob(job.idJob)">Supprimer</a></td>
+                        <td><a class="btn btn-danger" (click)="deleteJobById(job.idJob)">Supprimer</a></td>
                         <td><a class="btn btn-success" [routerLink]="['/update-job',job.idJob]">Editer</a></td>
                     </tr>
                 </tbody>

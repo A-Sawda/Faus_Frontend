@@ -16,7 +16,7 @@ export class SearchFilterPipe implements PipeTransform {
       else
         return [];
     }
-    else if(list){
+    else if (list) {
       return list;
     }
   }

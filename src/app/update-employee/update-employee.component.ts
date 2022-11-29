@@ -14,20 +14,22 @@ export class UpdateEmployeeComponent implements OnInit {
 
   currentEmployee = new Employee();
   jobs!: Job[];
-  updateIdJob!: string;
+  jobId!: string;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private employeeService: EmployeeService,
-    private jobServie: JobService) { }
+    private jobServie: JobService
+  ) { }
 
   ngOnInit(): void {
-    this.employeeService.consulterEmployee(this.activatedRoute.snapshot.params['id']).
+    this.employeeService.anEmployee(this.activatedRoute.snapshot.params['id']).
       subscribe(e => {
-        this.updateIdJob = e.job.idJob;
+        this.jobId = e.job.idJob;
         this.currentEmployee = e;
       });
-    this.jobServie.listeJobs().
+    this.jobServie.allJobs().
       subscribe(jobs => {
         this.jobs = jobs._embedded.jobs;
       }
@@ -35,7 +37,7 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   updateEmployee() {
-    this.jobServie.consulterJob(this.updateIdJob).subscribe(job => {
+    this.jobServie.aJob(this.jobId).subscribe(job => {
       this.currentEmployee.job = job;
       this.employeeService.updateEmployee(this.currentEmployee).subscribe(e => {
         this.router.navigate(['employees']);

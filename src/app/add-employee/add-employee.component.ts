@@ -12,28 +12,26 @@ import { JobService } from '../services/job.service';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  newEmployee = new Employee();
   jobs!: Job[];
-  newIdJob!: string;
-  newJob!: Job; //cats._embedded.categories;
+  newEmployee = new Employee();
+  newJob!: Job;
+  newJobId!: string;
 
-
-  constructor(private employeeService: EmployeeService, 
-    private jobServie:JobService, private router: Router) {
-    /* this.jobs = this.employeeService.listejobs(); */
-  }
+  constructor(
+    private employeeService: EmployeeService,
+    private jobServie: JobService, private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.jobServie.listeJobs().
+    this.jobServie.allJobs().
       subscribe(jobs => {
         this.jobs = jobs._embedded.jobs;
-      }
-      );
+      });
   }
 
   addEmployee() {
-    this.newEmployee.job = this.jobs.find(job => job.idJob == this.newIdJob)!;
-    this.employeeService.ajouterEmployee(this.newEmployee)
+    this.newEmployee.job = this.jobs.find(job => job.idJob == this.newJobId)!;
+    this.employeeService.addEmployee(this.newEmployee)
       .subscribe(e => {
         this.router.navigate(['employees']);
       });

@@ -8,7 +8,7 @@ import { Job } from '../model/job.model';
 })
 export class AddUpdateJobComponent implements OnInit {
 
-  @Input() ajout!:boolean;
+  @Input() addJobBool!: boolean;
   @Input() job!: Job;
   @Output() jobUpdated = new EventEmitter<Job>();
   @Output() jobCreated = new EventEmitter<Job>();
@@ -18,12 +18,12 @@ export class AddUpdateJobComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateJob() { 
-    this.jobUpdated.emit(this.job); 
+  updateJob() {
+    this.jobUpdated.emit(this.job);
   }
 
-  createJob() { 
-    this.jobCreated.emit(this.job); 
+  createJob() {
+    this.jobCreated.emit(this.job);
   }
 
 }

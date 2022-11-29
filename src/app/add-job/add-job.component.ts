@@ -12,16 +12,17 @@ export class AddJobComponent implements OnInit {
 
   newJob = new Job();
 
-  constructor(private jobServie:JobService, private router: Router) {
-  }
+  constructor(
+    private jobServie: JobService, private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   addJob() {
-    this.jobServie.ajouterJob(this.newJob)
+    this.jobServie.addJob(this.newJob)
       .subscribe(j => {
-        this.router.navigate(['liste-jobs']);
+        this.router.navigate(['jobs']);
       });
   }
 

@@ -12,20 +12,23 @@ export class UpdateJobComponent implements OnInit {
 
   currentJob = new Job();
 
-  constructor(private jobService:JobService,private activatedRoute: ActivatedRoute,
-    private router: Router,) { }
+  constructor(
+    private jobService: JobService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.jobService.consulterJob(this.activatedRoute.snapshot.params['id']).
+    this.jobService.aJob(this.activatedRoute.snapshot.params['id']).
       subscribe(e => {
         this.currentJob = e;
       });
   }
 
   updateJob() {
-      this.jobService.updateJob(this.currentJob).subscribe(e => {
-        this.router.navigate(['liste-jobs']);
-      });
+    this.jobService.updateJob(this.currentJob).subscribe(e => {
+      this.router.navigate(['jobs']);
+    });
   }
 
 }

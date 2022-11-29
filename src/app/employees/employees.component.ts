@@ -9,27 +9,29 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmployeesComponent implements OnInit {
 
-  employees!:Employee[];
+  employees!: Employee[];
   searchTerm!: string;
 
-  constructor(private employeeService : EmployeeService) { }
+  constructor(
+    private employeeService: EmployeeService
+  ) { }
 
   ngOnInit(): void {
-    this.chargerEmployees();
+    this.getAllEmployees();
   }
 
-  chargerEmployees(){
-    this.employeeService.listeEmployees()
-    .subscribe(e=>{
-      this.employees=e;
-    })
+  getAllEmployees() {
+    this.employeeService.allEmployees()
+      .subscribe(e => {
+        this.employees = e;
+      })
   }
 
-  supprimerEmployee(e: Employee) {
+  deleteEmployeeById(e: Employee) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.employeeService.supprimerEmployee(e.idEmployee).subscribe(() => {
-        this.chargerEmployees();
+      this.employeeService.deleteEmployeeById(e.idEmployee).subscribe(() => {
+        this.getAllEmployees();
       });
   }
 

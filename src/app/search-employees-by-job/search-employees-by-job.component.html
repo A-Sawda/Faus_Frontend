@@ -1,8 +1,7 @@
 <div class="container">
     <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
         <label>Jobs </label>
-        <select class="form-control form-control-lg" id="idJob" name="idJob" [(ngModel)]="idJob"
-            (change)="onChange()">
+        <select class="form-control form-control-lg" id="idJob" name="idJob" [(ngModel)]="idJob" (change)="onChange()">
             <option *ngFor="let job of jobs" value="{{job.idJob}}">
                 {{job.idJob}}
             </option>

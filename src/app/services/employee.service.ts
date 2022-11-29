@@ -11,19 +11,22 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class EmployeeService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  ajouterEmployee(e: Employee): Observable<Employee> {
+  addEmployee(e: Employee): Observable<Employee> {
     return this.http.post<Employee>(apiURL + "/employee", e, httpOptions);
   }
 
-  listeEmployees(): Observable<Employee[]> {
+  allEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(apiURL + "/employee");
   }
 
-  consulterEmployee(id: number): Observable<Employee> {
+  anEmployee(id: number): Observable<Employee> {
     const url = `${apiURL + "/employee"}/${id}`;
     return this.http.get<Employee>(url);
   }
@@ -32,12 +35,12 @@ export class EmployeeService {
     return this.http.put<Employee>(apiURL + "/employee", e, httpOptions);
   }
 
-  supprimerEmployee(id: number) {
+  deleteEmployeeById(id: number) {
     const url = `${apiURL + "/employee"}/${id}`;
     return this.http.delete(url, httpOptions);
   }
 
-  rechercherParJob(idJob: string): Observable<Employee[]> {
+  searchEmployeesByJobId(idJob: string): Observable<Employee[]> {
     const url = `${apiURL}/employee/jobemployees/${idJob}`;
     return this.http.get<Employee[]>(url);
   }

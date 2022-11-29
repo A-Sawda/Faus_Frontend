@@ -12,20 +12,23 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class JobService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  listeJobs(): Observable<JobWrapper> {
+  allJobs(): Observable<JobWrapper> {
     return this.http.get<JobWrapper>(jobrestURL);
   }
 
-  consulterJob(id: string): Observable<Job> {
-    const url = `${apiURL+"/job"}/${id}`;
+  aJob(id: string): Observable<Job> {
+    const url = `${apiURL + "/job"}/${id}`;
     return this.http.get<Job>(url);
   }
 
-  ajouterJob(job: Job): Observable<Job> {
+  addJob(job: Job): Observable<Job> {
     return this.http.post<Job>(apiURL + "/job", job, httpOptions);
   }
 
@@ -37,7 +40,7 @@ export class JobService {
     return this.http.delete<Job>(apiURL + "/job", job, httpOptions);
   } */
 
-  supprimerJob(id: string) {
+  deleteJobById(id: string) {
     const url = `${apiURL}/job/${id}`;
     return this.http.delete(url, httpOptions);
   }

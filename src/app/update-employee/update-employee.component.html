@@ -1,7 +1,5 @@
 <div class="container">
-    <div>
-        <h2>Modifier un Produit :</h2>
-    </div>
+    <h2>Modifier un Produit :</h2>
     <form>
         <div hidden class="col-sm-2 col-md-2 col-lg-2">
             <label>ID </label>
@@ -14,28 +12,33 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Date de naissance</label>
             <input type="date" [ngModel]="currentEmployee.brithdayEmployee | date: 'yyyy-MM-dd'"
-            (ngModelChange)=" currentEmployee.brithdayEmployee= $event" name="brithdayEmployee" class="form-control">
+                (ngModelChange)=" currentEmployee.brithdayEmployee= $event" name="brithdayEmployee"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Nom </label>
-            <input type="text" [(ngModel)]="currentEmployee.lastNameEmployee" name="lastNameEmployee" class="form-control">
+            <input type="text" [(ngModel)]="currentEmployee.lastNameEmployee" name="lastNameEmployee"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Prénom </label>
-            <input type="text" [(ngModel)]="currentEmployee.firstNameEmployee" name="firstNameEmployee" class="form-control">
+            <input type="text" [(ngModel)]="currentEmployee.firstNameEmployee" name="firstNameEmployee"
+                class="form-control">
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label>Salaire</label>
-            <input type="number" [(ngModel)]="currentEmployee.salaryEmployee" name="salaryEmployee" class="form-control">
+            <input type="number" [(ngModel)]="currentEmployee.salaryEmployee" name="salaryEmployee"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Date d'embauche</label>
             <input type="date" [ngModel]="currentEmployee.hiringDateEmployee | date: 'yyyy-MM-dd'"
-            (ngModelChange)=" currentEmployee.hiringDateEmployee= $event" name="hiringDateEmployee" class="form-control">
+                (ngModelChange)=" currentEmployee.hiringDateEmployee= $event" name="hiringDateEmployee"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Job</label>
-            <select class="form-control form-control-lg" id="idJob" name="idJob" [(ngModel)]="updateIdJob">
+            <select class="form-control form-control-lg" id="idJob" name="idJob" [(ngModel)]="jobId">
                 <option *ngFor="let job of jobs" [value]="job.idJob">
                     {{job.idJob}}
                 </option>
