@@ -15,6 +15,7 @@ import { UpdateJobComponent } from './update-job/update-job.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddUpdateJobComponent,
     SearchFilterPipe,
     AddJobComponent,
-    UpdateJobComponent
+    UpdateJobComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

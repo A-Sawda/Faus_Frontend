@@ -12,7 +12,7 @@ import { JobService } from '../services/job.service';
 export class SearchEmployeesByJobComponent implements OnInit {
 
   employees!: Employee[];
-  idJob!: string;
+  idJob: string="Tous";
   jobs!: Job[];
 
   constructor(
@@ -23,15 +23,25 @@ export class SearchEmployeesByJobComponent implements OnInit {
   ngOnInit(): void {
     this.jobService.allJobs().subscribe(jobs => {
       this.jobs = jobs._embedded.jobs;
-      this.idJob = this.jobs[0].idJob;
-      this.onChange();
+      this.jobs.push({idJob:"Tous",statusJob:"",salaryMaxJob:0,salaryMinJob:0});
+    });
+    this.getAllEmployees();
+  }
+
+  getAllEmployees(){
+    this.employeeService.allEmployees().subscribe(e=>{
+      this.employees=e;
     });
   }
 
   onChange() {
-    this.employeeService.searchEmployeesByJobId(this.idJob).subscribe(e => {
-      this.employees = e
-    });
+    if(this.idJob && this.idJob.length && this.idJob!="Tous"){
+      this.employeeService.searchEmployeesByJobId(this.idJob).subscribe(e => {
+        this.employees = e
+      });
+    }else{
+      this.getAllEmployees();
+    }
   }
 
 }
