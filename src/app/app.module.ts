@@ -16,6 +16,9 @@ import { UpdateJobComponent } from './update-job/update-job.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { HomeComponent } from './home/home.component';
     SearchFilterPipe,
     AddJobComponent,
     UpdateJobComponent,
-    HomeComponent
+    HomeComponent,
+    ForbiddenComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

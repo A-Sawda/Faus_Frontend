@@ -1,43 +1,56 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">FAuS</a>
+  <a class="navbar-brand">FAuS</a>
   <!-- Links -->
-  <ul class="navbar-nav">
+  <ul class="navbar-nav" *ngIf="authService.isloggedIn">
     <li class="nav-item">
       <a class="nav-link" routerLink="/home">Home</a>
     </li>
     <!-- Dropdown -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="/employees" id="navbardrop" data-toggle="dropdown">
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
         Employés
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/add-employee">Ajouter</a>
-        <a class="dropdown-item" href="/employees">Lister</a>
+        <a class="dropdown-item" routerLink="/add-employee" *ngIf="authService.isAdmin()">Ajouter</a>
+        <a class="dropdown-item" routerLink="/employees">Lister</a>
         <a class="dropdown-item" routerLink="/search-employees-by-job">Employés Par Job</a>
       </div>
     </li>
     <!-- Dropdown -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="/jobs" id="navbardrop" data-toggle="dropdown">
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
         Jobs
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/add-job">Ajouter</a>
+        <a class="dropdown-item" routerLink="/add-job" *ngIf="authService.isAdmin()">Ajouter</a>
         <a class="dropdown-item" routerLink="/jobs">Lister</a>
       </div>
     </li>
   </ul>
-  <ul class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto" *ngIf="authService.isloggedIn">
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        [username]
+      <a class="nav-link dropdown-toggle" routerLink="#" id="navbardrop" data-toggle="dropdown">
+        {{authService.loggedUser}}
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">login</a>
-        <a class="dropdown-item" href="#">logout</a>
-        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" routerLink="/login" *ngIf="!authService.isloggedIn">Se connecter</a>
+        <a class="dropdown-item" routerLink="/logout" *ngIf="authService.isloggedIn">Se déconnecter</a>
+        <a class="dropdown-item" routerLink="#">Profil</a>
       </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto" *ngIf="!authService.isloggedIn">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login" id="navbardrop" data-toggle="dropdown">
+        Se connecter
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login" id="navbardrop" data-toggle="dropdown">
+        S'inscrire
+      </a>
+    </li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

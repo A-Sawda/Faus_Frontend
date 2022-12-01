@@ -4,7 +4,7 @@
             <span class="input-group-text" id="basic-addon1">Chercher un employé</span>
         </div>
         <input type="text" class="form-control" placeholder="Nom Prénom" aria-label="Nom Prénom"
-            aria-describedby="basic-addon1" #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm"> 
+            aria-describedby="basic-addon1" #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm">
     </div>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -29,9 +29,10 @@
                         <td>{{employee.salaryEmployee}}</td>
                         <td>{{employee.hiringDateEmployee| date:'dd/MM/yyyy'}}</td>
                         <td>{{employee.job.idJob}}</td>
-                        <td><a class="btn btn-danger" (click)="deleteEmployeeById(employee)">Supprimer</a></td>
-                        <td><a class="btn btn-success"
-                                [routerLink]="['/update-employee',employee.idEmployee]">Modifier</a>
+                        <td><a class="btn btn-danger" (click)="deleteEmployeeById(employee)"
+                                *ngIf="authService.isAdmin()">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/update-employee',employee.idEmployee]"
+                                *ngIf="authService.isAdmin()">Modifier</a>
                         </td>
                     </tr>
                 </tbody>

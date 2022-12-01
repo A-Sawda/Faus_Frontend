@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../model/job.model';
+import { AuthService } from '../services/auth.service';
 import { JobService } from '../services/job.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class JobsComponent implements OnInit {
   searchTerm!: string;
 
   constructor(
-    private jobService: JobService
+    private jobService: JobService,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

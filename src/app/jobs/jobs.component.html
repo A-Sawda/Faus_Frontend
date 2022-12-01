@@ -27,8 +27,10 @@
                         <td>{{job.statusJob}}</td>
                         <td>{{job.salaryMinJob}}</td>
                         <td>{{job.salaryMaxJob}}</td>
-                        <td><a class="btn btn-danger" (click)="deleteJobById(job.idJob)">Supprimer</a></td>
-                        <td><a class="btn btn-success" [routerLink]="['/update-job',job.idJob]">Editer</a></td>
+                        <td><a class="btn btn-danger" (click)="deleteJobById(job.idJob)"
+                                *ngIf="authService.isAdmin()">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/update-job',job.idJob]"
+                                *ngIf="authService.isAdmin()">Editer</a></td>
                     </tr>
                 </tbody>
             </table>
