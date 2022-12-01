@@ -1,56 +1,110 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand">FAuS</a>
-  <!-- Links -->
-  <ul class="navbar-nav" *ngIf="authService.isloggedIn">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/home">Home</a>
-    </li>
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-        Employés
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/add-employee" *ngIf="authService.isAdmin()">Ajouter</a>
-        <a class="dropdown-item" routerLink="/employees">Lister</a>
-        <a class="dropdown-item" routerLink="/search-employees-by-job">Employés Par Job</a>
-      </div>
-    </li>
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-        Jobs
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/add-job" *ngIf="authService.isAdmin()">Ajouter</a>
-        <a class="dropdown-item" routerLink="/jobs">Lister</a>
-      </div>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto" *ngIf="authService.isloggedIn">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-        {{authService.loggedUserName}}
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="/login" *ngIf="!authService.isloggedIn">Se connecter</a>
-        <a class="dropdown-item" routerLink="/logout" *ngIf="authService.isloggedIn">Se déconnecter</a>
-        <a class="dropdown-item" routerLink="#">Profil</a>
-      </div>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto" *ngIf="!authService.isloggedIn">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login" id="navbardrop" data-toggle="dropdown">
-        Se connecter
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/sign-up" id="navbardrop" data-toggle="dropdown">
-        S'inscrire
-      </a>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark" *ngIf="authService.isloggedIn">
+  <nav class="navbar bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="assets/faus_logo.PNG" width="30" height="30" class="d-inline-block align-top" alt="">
+      Femmes Au Sport
+    </a>
+  </nav>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li> -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Employés
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/add-employee" *ngIf="authService.isAdmin()">Ajouter</a>
+          <a class="dropdown-item" routerLink="/employees">Lister</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/search-employees-by-job">Employés Par Job</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Clients
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Ajouter</a>
+          <a class="dropdown-item">Lister</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Jobs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/add-job" *ngIf="authService.isAdmin()">Ajouter</a>
+          <a class="dropdown-item" routerLink="/jobs">Lister</a>
+        </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+          {{authService.loggedUserName}}
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/logout">Se déconnecter</a>
+          <a class="dropdown-item" routerLink="#">Profil</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
+
+
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark" *ngIf="!authService.isloggedIn">
+  <nav class="navbar bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="assets/faus_logo.PNG" width="30" height="30" class="d-inline-block align-top" alt="">
+      Femmes Au Sport
+    </a>
+  </nav>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" id="navbardrop" data-toggle="dropdown">
+          Se connecter
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up" id="navbardrop" data-toggle="dropdown">
+          S'inscrire
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>

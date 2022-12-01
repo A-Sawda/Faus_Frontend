@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JobType, JobTypeUi } from '../constants/jobTypeUi';
+import { SexType, SexTypeUi } from '../constants/sexTypeUi';
 import { Employee } from '../model/employee.model';
 import { Job } from '../model/job.model';
 import { EmployeeService } from '../services/employee.service';
@@ -15,6 +17,10 @@ export class UpdateEmployeeComponent implements OnInit {
   currentEmployee = new Employee();
   jobs!: Job[];
   jobId!: string;
+  public jobType = JobType;
+  public jobTypeUi = JobTypeUi;
+  public sexType = SexType;
+  public sexTypeUi = SexTypeUi;
 
   constructor(
     private activatedRoute: ActivatedRoute,

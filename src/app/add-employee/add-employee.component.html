@@ -7,7 +7,10 @@
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Sexe</label>
-            <input type="text" [(ngModel)]="newEmployee.sexEmployee" name="sexEmployee" class="form-control">
+            <select class="form-control form-control-lg" id="sexEmployee" name="sexEmployee" [(ngModel)]="newEmployee.sexEmployee">
+                <option value="{{sexType.FEMININ}}">{{sexTypeUi[sexType.FEMININ].label}}</option>
+                <option value="{{sexType.MASCULIN}}">{{sexTypeUi[sexType.MASCULIN].label}}</option>
+            </select>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Date de naissance</label>
@@ -35,7 +38,7 @@
             <label>Job</label>
             <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newJobId">
                 <option *ngFor="let job of jobs" [value]="job.idJob">
-                    {{job.idJob}}
+                    {{jobTypeUi[job.idJob].label}}
                 </option>
             </select>
         </div>

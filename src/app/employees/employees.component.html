@@ -6,29 +6,29 @@
         <input type="text" class="form-control" placeholder="Nom Prénom" aria-label="Nom Prénom"
             aria-describedby="basic-addon1" #fullNameEmployee [(ngModel)]="searchTerm" name="searchTerm">
     </div>
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <table class="table table-striped">
+    <div>
+        <div class="table-responsive">
+            <table class="table">
                 <tr>
-                    <th>Id</th>
-                    <th>Sexe</th>
-                    <th>Date de naissance</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Salaire</th>
-                    <th>Date d'embauche</th>
-                    <th>Job</th>
+                    <th scope="col">Identifiant</th>
+                    <th scope="col">Sexe</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Salaire</th>
+                    <th scope="col">Date d'embauche</th>
+                    <th scope="col">Job</th>
                 </tr>
                 <tbody *ngFor="let employee of employees | searchFilter: searchTerm">
                     <tr>
-                        <td>{{employee.idEmployee}}</td>
-                        <td>{{employee.sexEmployee}}</td>
+                        <th scope="row">{{employee.idEmployee}}</th>
+                        <td>{{sexTypeUi[employee.sexEmployee].label}}</td>
                         <td>{{employee.brithdayEmployee | date:'dd/MM/yyyy'}}</td>
                         <td>{{employee.lastNameEmployee}}</td>
                         <td>{{employee.firstNameEmployee}}</td>
                         <td>{{employee.salaryEmployee}}</td>
                         <td>{{employee.hiringDateEmployee| date:'dd/MM/yyyy'}}</td>
-                        <td>{{employee.job.idJob}}</td>
+                        <td>{{jobTypeUi[employee.job.idJob].label}}</td>
                         <td><a class="btn btn-danger" (click)="deleteEmployeeById(employee)"
                                 *ngIf="authService.isAdmin()">Supprimer</a></td>
                         <td><a class="btn btn-success" [routerLink]="['/update-employee',employee.idEmployee]"

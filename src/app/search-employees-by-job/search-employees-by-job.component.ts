@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobType, JobTypeUi } from '../constants/jobTypeUi';
+import { SexType, SexTypeUi } from '../constants/sexTypeUi';
 import { Employee } from '../model/employee.model';
 import { Job } from '../model/job.model';
 import { EmployeeService } from '../services/employee.service';
@@ -14,6 +16,10 @@ export class SearchEmployeesByJobComponent implements OnInit {
   employees!: Employee[];
   idJob: string="Tous";
   jobs!: Job[];
+  public jobType = JobType;
+  public jobTypeUi = JobTypeUi;
+  public sexType = SexType;
+  public sexTypeUi = SexTypeUi;
 
   constructor(
     private employeeService: EmployeeService,

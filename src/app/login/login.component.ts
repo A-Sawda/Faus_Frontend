@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthService } from '../services/auth.service';
@@ -28,6 +28,14 @@ export class LoginComponent implements OnInit {
       //alert('Login ou mot de passe incorrecte!');
       console.log("mach",this.authService.users);
       this.erreur = 1;
+  }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(
+    event: KeyboardEvent
+  ) {
+    if (event.code === "Enter") {
+      this.onLoggedin();
+    }
   }
 
 }

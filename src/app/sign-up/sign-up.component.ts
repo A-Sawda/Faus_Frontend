@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
 import { AuthService } from '../services/auth.service';
 
@@ -19,6 +19,14 @@ export class SignUpComponent implements OnInit {
   signUp() {
     this.user.roles = ['USER'];
     this.authService.signUp(this.user);
+  }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(
+    event: KeyboardEvent
+  ) {
+    if (event.code === "Enter") {
+      this.signUp();
+    }
   }
 
 }

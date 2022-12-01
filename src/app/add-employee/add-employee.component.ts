@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JobType, JobTypeUi } from '../constants/jobTypeUi';
+import { SexType, SexTypeUi } from '../constants/sexTypeUi';
 import { Employee } from '../model/employee.model';
 import { Job } from '../model/job.model';
 import { EmployeeService } from '../services/employee.service';
@@ -16,6 +18,10 @@ export class AddEmployeeComponent implements OnInit {
   newEmployee = new Employee();
   newJob!: Job;
   newJobId!: string;
+  public jobType = JobType;
+  public jobTypeUi = JobTypeUi;
+  public sexType = SexType;
+  public sexTypeUi = SexTypeUi;
 
   constructor(
     private employeeService: EmployeeService,
@@ -26,6 +32,7 @@ export class AddEmployeeComponent implements OnInit {
     this.jobServie.allJobs().
       subscribe(jobs => {
         this.jobs = jobs._embedded.jobs;
+        console.log("jobs",this.jobs);
       });
   }
 

@@ -1,38 +1,38 @@
 <div class="container">
     <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
         <label>Jobs </label>
-        <select class="form-control form-control-lg" id="idJob" name="idJob" [(ngModel)]="idJob" (change)="onChange()">
+        <select class="form-control" id="idJob" name="idJob" [(ngModel)]="idJob" (change)="onChange()">
             <option *ngFor="let job of jobs" value="{{job.idJob}}">
-                {{job.idJob}}
+                <ng-container *ngIf="job.idJob!='Tous';then idJob_bon else idJob_pas_bon"></ng-container>
+                <ng-template #idJob_bon>{{jobTypeUi[job.idJob].label}}</ng-template>
+                <ng-template #idJob_pas_bon>Tous</ng-template>
             </option>
         </select>
     </div>
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <table class="table table-striped">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Salaire</th>
+                <th>Date d'embauche</th>
+                <th>Job</th>
+            </tr>
+            <tbody *ngFor="let employee of employees">
                 <tr>
-                    <th>Id</th>
-                    <th>Sexe</th>
-                    <th>Date de naissance</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Salaire</th>
-                    <th>Date d'embauche</th>
-                    <th>Job</th>
+                    <th scope="row">{{employee.idEmployee}}</th>
+                    <td>{{sexTypeUi[employee.sexEmployee].label}}</td>
+                    <td>{{employee.brithdayEmployee | date:'dd/MM/yyyy'}}</td>
+                    <td>{{employee.lastNameEmployee}}</td>
+                    <td>{{employee.firstNameEmployee}}</td>
+                    <td>{{employee.salaryEmployee}}</td>
+                    <td>{{employee.hiringDateEmployee| date:'dd/MM/yyyy'}}</td>
+                    <td>{{jobTypeUi[employee.job.idJob].label}}</td>
                 </tr>
-                <tbody *ngFor="let employee of employees">
-                    <tr>
-                        <td>{{employee.idEmployee}}</td>
-                        <td>{{employee.sexEmployee}}</td>
-                        <td>{{employee.brithdayEmployee | date:'dd/MM/yyyy'}}</td>
-                        <td>{{employee.lastNameEmployee}}</td>
-                        <td>{{employee.firstNameEmployee}}</td>
-                        <td>{{employee.salaryEmployee}}</td>
-                        <td>{{employee.hiringDateEmployee| date:'dd/MM/yyyy'}}</td>
-                        <td>{{employee.job.idJob}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 </div>

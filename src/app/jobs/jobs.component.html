@@ -10,30 +10,28 @@
         <input type="text" class="form-control" placeholder="Identifiant" aria-label="Identifiant"
             aria-describedby="basic-addon1" #idJob [(ngModel)]="searchTerm" name="searchTerm">
     </div>
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Statut</th>
-                        <th>Salaire Min</th>
-                        <th>Salaire Max</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let job of jobs | searchFilter: searchTerm">
-                    <tr>
-                        <td>{{job.idJob}}</td>
-                        <td>{{job.statusJob}}</td>
-                        <td>{{job.salaryMinJob}}</td>
-                        <td>{{job.salaryMaxJob}}</td>
-                        <td><a class="btn btn-danger" (click)="deleteJobById(job.idJob)"
-                                *ngIf="authService.isAdmin()">Supprimer</a></td>
-                        <td><a class="btn btn-success" [routerLink]="['/update-job',job.idJob]"
-                                *ngIf="authService.isAdmin()">Editer</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Identifiant</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Salaire Min</th>
+                    <th scope="col">Salaire Max</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let job of jobs | searchFilter: searchTerm">
+                <tr>
+                    <th scope="row">{{jobTypeUi[job.idJob].label}}</th>
+                    <td>{{jobTypeUi[job.idJob].status}}</td>
+                    <td>{{job.salaryMinJob}}</td>
+                    <td>{{job.salaryMaxJob}}</td>
+                    <td><a class="btn btn-danger" (click)="deleteJobById(job.idJob)"
+                            *ngIf="authService.isAdmin()">Supprimer</a></td>
+                    <td><a class="btn btn-success" [routerLink]="['/update-job',job.idJob]"
+                            *ngIf="authService.isAdmin()">Editer</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
