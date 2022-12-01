@@ -11,6 +11,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchEmployeesByJobComponent } from './search-employees-by-job/search-employees-by-job.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { UpdateJobComponent } from './update-job/update-job.component';
 
@@ -24,9 +25,10 @@ const routes: Routes = [
   { path: "jobs", component: JobsComponent },
   { path: "add-job", component: AddJobComponent, canActivate: [AddJobGuard] },
   { path: "update-job/:id", component: UpdateJobComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'app-forbidden', component: ForbiddenComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: "login", component: LoginComponent },
+  { path: "app-forbidden", component: ForbiddenComponent },
+  { path: "logout", component: LogoutComponent },
+  { path: "sign-up", component: SignUpComponent },
 ];
 
 @NgModule({

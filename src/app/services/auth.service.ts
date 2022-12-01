@@ -8,7 +8,7 @@ import { User } from '../model/user.model';
 export class AuthService {
 
   users: User[] = [{ "username": "admin", "password": "123", "roles": ['ADMIN'] }, { "username": "sawda", "password": "123", "roles": ['USER'] }];
-  public loggedUser!: string;
+  public loggedUserName!: string;
   public isloggedIn: Boolean = false;
   public roles!: string[];
 
@@ -16,10 +16,15 @@ export class AuthService {
 
   logout() {
     this.isloggedIn = false;
-    this.loggedUser = undefined!;
+    this.loggedUserName = undefined!;
     this.roles = undefined!;
     localStorage.removeItem('loggedUser');
     localStorage.setItem('isloggedIn', String(this.isloggedIn));
+    this.router.navigate(['/login']);
+  }
+
+  signUp(user:User){
+    this.users.push(user);
     this.router.navigate(['/login']);
   }
 
@@ -28,10 +33,10 @@ export class AuthService {
     this.users.forEach((curUser) => {
       if (user.username == curUser.username && user.password == curUser.password) {
         validUser = true;
-        this.loggedUser = curUser.username;
+        this.loggedUserName = curUser.username;
         this.isloggedIn = true;
         this.roles = curUser.roles;
-        localStorage.setItem('loggedUser', this.loggedUser);
+        localStorage.setItem('loggedUser', this.loggedUserName);
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
       }
     });
@@ -44,10 +49,10 @@ export class AuthService {
     return (this.roles.indexOf('ADMIN') > -1);
   }
 
-  setLoggedUserFromLocalStorage(login: string) {
-    this.loggedUser = login;
+  setLoggedUserFromLocalStorage(username: string) {
+    this.loggedUserName = username;
     this.isloggedIn = true;
-    this.getUserRoles(login);
+    this.getUserRoles(username);
   }
 
   getUserRoles(username: string) {

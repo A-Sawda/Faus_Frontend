@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     else
       //alert('Login ou mot de passe incorrecte!');
+      console.log("mach",this.authService.users);
       this.erreur = 1;
   }
 
