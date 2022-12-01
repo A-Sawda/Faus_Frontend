@@ -64,9 +64,13 @@
           {{authService.loggedUserName}}
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/logout">Se déconnecter</a>
           <a class="dropdown-item" routerLink="#">Profil</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="navbardrop" routerLink="/logout">
+          Déconnexion
+        </a>
       </li>
     </ul>
   </div>
@@ -108,3 +112,4 @@
 </nav>
 
 <router-outlet></router-outlet>
+
